@@ -1,0 +1,322 @@
+Microsoft Windows [Version 10.0.22000.376]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\welcome>mongo
+MongoDB shell version v5.0.6
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("8247e904-8f9c-46f4-b2e4-0f48e6826d3f") }
+MongoDB server version: 5.0.6
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+---
+The server generated these startup warnings when booting:
+        2022-03-07T20:27:22.143+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> use assignment
+switched to db assignment
+> db
+assignment
+> db.createCollection("users")
+{ "ok" : 1 }
+> show collections
+users
+> db.users.insert({"first_name":"shivam","last_name":"yadav","email":"shivamvnsindia@gmail.com","gender":"male","ip_address":4000})
+WriteResult({ "nInserted" : 1 })
+> db.users.find({})
+{ "_id" : ObjectId("62264b57e09b62fe0b48c8ca"), "first_name" : "shivam", "last_name" : "yadav", "email" : "shivamvnsindia@gmail.com", "gender" : "male", "ip_address" : 4000 }
+
+
+
+
+> db.users.insertMany([{"first_name":"saurabh","last_name":"tiwari","gender":"male"},{"first_name":"satya","last_name":"mishra","gender":"female"},{"first_name":"anushka","last_name":"mishra","gender":"female"},{"first_name":shivangee","last_name":"yadav","gender":"female"},{"first_name":"sashank","last_name":"tiwari","gender":"male"},{"first_name":"aditi","last_name":"yadav","gender":"female"},{"first_name":"nagina","last_name":"yadav","gender":"female"},{"first_name":"kaushal","last_name":"singh","gender":"male"},{"first_name":"yash","last_name":"gupta","gender":"male"}])
+uncaught exception: SyntaxError: missing } after property list :
+@(shell):1:232
+>
+> db.users.insertMany([{"first_name":"saurabh","last_name":"tiwari","gender":"male"},{"first_name":"satya","last_name":"mishra","gender":"female"},{"first_name":"anushka","last_name":"mishra","gender":"female"},{"first_name":shivangee","last_name":"yadav","gender":"female"},{"first_name":"sashank","last_name":"tiwari","gender":"male"},{"first_name":"aditi","last_name":"yadav","gender":"female"},{"first_name":"nagina","last_name":"yadav","gender":"female"},{"first_name":"kaushal","last_name":"singh","gender":"male"},{"first_name":"yash","last_name":"gupta","gender":"male"}])
+uncaught exception: SyntaxError: missing } after property list :
+@(shell):1:232
+> db.users.insertMany([{"first_name":"saurabh","last_name":"tiwari","gender":"male"},{"first_name":"satya","last_name":"mishra","gender":"female"},{"first_name":"anushka","last_name":"mishra","gender":"female"},{"first_name":shivangee","last_name":"yadav","gender":"female"},{"first_name":"sashank","last_name":"tiwari","gender":"male"}])
+uncaught exception: SyntaxError: missing } after property list :
+@(shell):1:232
+
+
+
+
+> db.users.insertMany([{"first_name":"saurabh","last_name":"tiwari","gender":"male"},{"first_name":"satya","last_name":"mishra","gender":"female"}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("62264febe09b62fe0b48c8cb"),
+                ObjectId("62264febe09b62fe0b48c8cc")
+        ]
+}
+> db.users.find({})
+{ "_id" : ObjectId("62264b57e09b62fe0b48c8ca"), "first_name" : "shivam", "last_name" : "yadav", "email" : "shivamvnsindia@gmail.com", "gender" : "male", "ip_address" : 4000 }
+{ "_id" : ObjectId("62264febe09b62fe0b48c8cb"), "first_name" : "saurabh", "last_name" : "tiwari", "gender" : "male" }
+{ "_id" : ObjectId("62264febe09b62fe0b48c8cc"), "first_name" : "satya", "last_name" : "mishra", "gender" : "female" }
+> db.users.insertMany([{"first_name":"anushka","last_name":"mishra","gender":"female"},{"first_name":"shivangee","last_name":"yadav","gender":"female"},{"first_name":"sashank","last_name":"tiwari","gender":"male"},{"first_name":"aditi","last_name":"yadav","gender":"female"},{"first_name":"nagina","last_name":"yadav","gender":"female"},{"first_name":"kaushal","last_name":"singh","gender":"male"},{"first_name":"yash","last_name":"gupta","gender":"male"}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("622650ace09b62fe0b48c8cd"),
+                ObjectId("622650ace09b62fe0b48c8ce"),
+                ObjectId("622650ace09b62fe0b48c8cf"),
+                ObjectId("622650ace09b62fe0b48c8d0"),
+                ObjectId("622650ace09b62fe0b48c8d1"),
+                ObjectId("622650ace09b62fe0b48c8d2"),
+                ObjectId("622650ace09b62fe0b48c8d3")
+        ]
+}
+> db.users.find({})
+{ "_id" : ObjectId("62264b57e09b62fe0b48c8ca"), "first_name" : "shivam", "last_name" : "yadav", "email" : "shivamvnsindia@gmail.com", "gender" : "male", "ip_address" : 4000 }
+{ "_id" : ObjectId("62264febe09b62fe0b48c8cb"), "first_name" : "saurabh", "last_name" : "tiwari", "gender" : "male" }
+{ "_id" : ObjectId("62264febe09b62fe0b48c8cc"), "first_name" : "satya", "last_name" : "mishra", "gender" : "female" }
+{ "_id" : ObjectId("622650ace09b62fe0b48c8cd"), "first_name" : "anushka", "last_name" : "mishra", "gender" : "female" }
+{ "_id" : ObjectId("622650ace09b62fe0b48c8ce"), "first_name" : "shivangee", "last_name" : "yadav", "gender" : "female" }
+{ "_id" : ObjectId("622650ace09b62fe0b48c8cf"), "first_name" : "sashank", "last_name" : "tiwari", "gender" : "male" }
+{ "_id" : ObjectId("622650ace09b62fe0b48c8d0"), "first_name" : "aditi", "last_name" : "yadav", "gender" : "female" }
+{ "_id" : ObjectId("622650ace09b62fe0b48c8d1"), "first_name" : "nagina", "last_name" : "yadav", "gender" : "female" }
+{ "_id" : ObjectId("622650ace09b62fe0b48c8d2"), "first_name" : "kaushal", "last_name" : "singh", "gender" : "male" }
+{ "_id" : ObjectId("622650ace09b62fe0b48c8d3"), "first_name" : "yash", "last_name" : "gupta", "gender" : "male" }
+> db.users.find({}).pretty()
+{
+        "_id" : ObjectId("62264b57e09b62fe0b48c8ca"),
+        "first_name" : "shivam",
+        "last_name" : "yadav",
+        "email" : "shivamvnsindia@gmail.com",
+        "gender" : "male",
+        "ip_address" : 4000
+}
+{
+        "_id" : ObjectId("62264febe09b62fe0b48c8cb"),
+        "first_name" : "saurabh",
+        "last_name" : "tiwari",
+        "gender" : "male"
+}
+{
+        "_id" : ObjectId("62264febe09b62fe0b48c8cc"),
+        "first_name" : "satya",
+        "last_name" : "mishra",
+        "gender" : "female"
+}
+{
+        "_id" : ObjectId("622650ace09b62fe0b48c8cd"),
+        "first_name" : "anushka",
+        "last_name" : "mishra",
+        "gender" : "female"
+}
+{
+        "_id" : ObjectId("622650ace09b62fe0b48c8ce"),
+        "first_name" : "shivangee",
+        "last_name" : "yadav",
+        "gender" : "female"
+}
+{
+        "_id" : ObjectId("622650ace09b62fe0b48c8cf"),
+        "first_name" : "sashank",
+        "last_name" : "tiwari",
+        "gender" : "male"
+}
+{
+        "_id" : ObjectId("622650ace09b62fe0b48c8d0"),
+        "first_name" : "aditi",
+        "last_name" : "yadav",
+        "gender" : "female"
+}
+{
+        "_id" : ObjectId("622650ace09b62fe0b48c8d1"),
+        "first_name" : "nagina",
+        "last_name" : "yadav",
+        "gender" : "female"
+}
+{
+        "_id" : ObjectId("622650ace09b62fe0b48c8d2"),
+        "first_name" : "kaushal",
+        "last_name" : "singh",
+        "gender" : "male"
+}
+{
+        "_id" : ObjectId("622650ace09b62fe0b48c8d3"),
+        "first_name" : "yash",
+        "last_name" : "gupta",
+        "gender" : "male"
+}
+
+
+
+
+> db.users.findOne({"first_name":"shivam"}).pretty()
+uncaught exception: TypeError: db.users.findOne(...).pretty is not a function :
+@(shell):1:1
+
+
+
+
+> db.users.findOne({"first_name":"shivam"})
+{
+        "_id" : ObjectId("62264b57e09b62fe0b48c8ca"),
+        "first_name" : "shivam",
+        "last_name" : "yadav",
+        "email" : "shivamvnsindia@gmail.com",
+        "gender" : "male",
+        "ip_address" : 4000
+}
+> db.users.update({"first_name":"shivam"},{$set:{"last_name":"shardar"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+>
+>
+> db.users.findOne({"first_name":"shivam"})
+{
+        "_id" : ObjectId("62264b57e09b62fe0b48c8ca"),
+        "first_name" : "shivam",
+        "last_name" : "shardar",
+        "email" : "shivamvnsindia@gmail.com",
+        "gender" : "male",
+        "ip_address" : 4000
+}
+
+
+
+> db.updateManu({"gender":"male"},{$set:{"religition":"Hindu"}})
+uncaught exception: TypeError: db.updateManu is not a function :
+@(shell):1:1
+> db.updateMany({"gender":"male"},{$set:{"religition":"Hindu"}})
+uncaught exception: TypeError: db.updateMany is not a function :
+@(shell):1:1
+
+
+
+
+> db.users.updateMany({"gender":"male"},{$set:{"religition":"Hindu"}})
+{ "acknowledged" : true, "matchedCount" : 5, "modifiedCount" : 5 }
+
+
+
+> db.users.find({}).pretty()
+{
+        "_id" : ObjectId("62264b57e09b62fe0b48c8ca"),
+        "first_name" : "shivam",
+        "last_name" : "shardar",
+        "email" : "shivamvnsindia@gmail.com",
+        "gender" : "male",
+        "ip_address" : 4000,
+        "religition" : "Hindu"
+}
+{
+        "_id" : ObjectId("62264febe09b62fe0b48c8cb"),
+        "first_name" : "saurabh",
+        "last_name" : "tiwari",
+        "gender" : "male",
+        "religition" : "Hindu"
+}
+{
+        "_id" : ObjectId("62264febe09b62fe0b48c8cc"),
+        "first_name" : "satya",
+        "last_name" : "mishra",
+        "gender" : "female"
+}
+{
+        "_id" : ObjectId("622650ace09b62fe0b48c8cd"),
+        "first_name" : "anushka",
+        "last_name" : "mishra",
+        "gender" : "female"
+}
+{
+        "_id" : ObjectId("622650ace09b62fe0b48c8ce"),
+        "first_name" : "shivangee",
+        "last_name" : "yadav",
+        "gender" : "female"
+}
+{
+        "_id" : ObjectId("622650ace09b62fe0b48c8cf"),
+        "first_name" : "sashank",
+        "last_name" : "tiwari",
+        "gender" : "male",
+        "religition" : "Hindu"
+}
+{
+        "_id" : ObjectId("622650ace09b62fe0b48c8d0"),
+        "first_name" : "aditi",
+        "last_name" : "yadav",
+        "gender" : "female"
+}
+{
+        "_id" : ObjectId("622650ace09b62fe0b48c8d1"),
+        "first_name" : "nagina",
+        "last_name" : "yadav",
+        "gender" : "female"
+}
+{
+        "_id" : ObjectId("622650ace09b62fe0b48c8d2"),
+        "first_name" : "kaushal",
+        "last_name" : "singh",
+        "gender" : "male",
+        "religition" : "Hindu"
+}
+{
+        "_id" : ObjectId("622650ace09b62fe0b48c8d3"),
+        "first_name" : "yash",
+        "last_name" : "gupta",
+        "gender" : "male",
+        "religition" : "Hindu"
+}
+
+
+
+
+> db.users.remove("first_name":"shivam"})
+uncaught exception: SyntaxError: missing ) after argument list :
+@(shell):1:28
+
+
+
+> db.users.remove({"first_name":"shivam"})
+WriteResult({ "nRemoved" : 1 })
+
+
+
+> db.users.remove({})
+WriteResult({ "nRemoved" : 9 })
+
+
+> db
+assignment
+
+
+
+> db.dropDatabase()
+{ "ok" : 1 }
+> db
+assignment
+
+
+
+> db.dropDatabase()
+{ "ok" : 1 }
+
+
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+>
