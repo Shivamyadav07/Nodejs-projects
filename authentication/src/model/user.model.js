@@ -16,6 +16,7 @@ userSchema.pre("save", function (next) {
   this.pasword = bcrypt.hashSync(this.pasword, 5);
   return next();
 });
+// ------------------------------------------------method to check pasword-------------------------------
 
 userSchema.methods.checkPasword = function(pasword){
   return bcrypt.compareSync(pasword, this.pasword);
